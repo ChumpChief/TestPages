@@ -6,23 +6,17 @@
 @-ms-viewport {
     width: 384px;
 }
-html, .scroller {
+html {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
 }
-
-.scroller {
-    width: 400px;
-    height: 400px;
-    overflow: scroll;
-    position: relative;
+.win8button {
+    width: 110px;
+    height: 44px;
 }
 
-.makeitscroll {
-    width: 1px;
-    height: 1px;
-    position: absolute;
-    top: 4000px;
-    left: 4000px;
+.phonebutton {
+    width: 136px;
+    height: 48px;
 }
 </style>
 <script>
@@ -35,6 +29,10 @@ html, .scroller {
 </script>
 </head>
 <body>
+    Win8 button style:<br />
+    <button class="win8button">110x44</button><br />
+    Phone button style:<br />
+    <button class="phonebutton">136x48</button><br />
     <div id="output"></div>
 </body>
 </html>
