@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<style>
+@-ms-viewport {
+    width: 100%;
+}
+html, .scroller {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
+}
+
+.scroller {
+    width: 400px;
+    height: 400px;
+    overflow: scroll;
+    position: relative;
+}
+
+.makeitscroll {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 4000px;
+    left: 4000px;
+}
+</style>
+<script>
+    function handleLoad() {
+        document.getElementById("output").innerHTML = screen.deviceXDPI / screen.logicalXDPI + "<br />";
+        document.getElementById("output").innerHTML += document.documentElement.msContentZoomFactor + "<br />";
+        document.getElementById("output").innerHTML += window.devicePixelRatio;
+    }
+    document.addEventListener("DOMContentLoaded", handleLoad);
+</script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>
