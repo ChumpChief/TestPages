@@ -14,6 +14,10 @@
    HTML5 display definitions
    ========================================================================== */
 
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
 
 
 /* =============================================================================
@@ -36,6 +40,87 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 	margin-right: auto;
 }
 
+::-moz-selection { background: #8A0F8A; color: #fff; text-shadow: none; }
+::selection { background: #8A0F8A; color: #fff; text-shadow: none; }
+
+#content-info{
+	color: hsl(0,0%,50%);
+}
+
+.footnote {
+font-size: 8px;
+}
+
+.footnotes {
+font-size: 12px;
+line-height: 150%;
+margin-bottom: 15px;
+}
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a { color: #06c; }
+a:visited { color: #06c; }
+a:focus { color: #09f; outline: thin dotted; }
+a:hover, a:active { color: #09f; outline: 0; }
+a:active, input.button:active { outline: 0; position: relative; top: 1px; }
+
+.titleanchor{
+	text-decoration: none;
+}
+.button, #post-nav a, #comments-nav a {
+	display: inline-block;
+	background: #06c;
+	background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+	background-image: linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));		
+	-moz-border-radius: 6px; 
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	color: #fff;
+	border: none;
+	padding: 8px 16px;
+	cursor: pointer;
+	text-decoration: none;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.15);
+	width: auto;
+	overflow: visible;
+	-moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), 1px 1px 3px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), 1px 1px 3px rgba(0, 0, 0, 0.2) inset;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2), 1px 1px 3px rgba(0, 0, 0, 0.2) inset;
+	-webkit-appearance: none;
+}
+.button:hover, #post-nav a:hover, #comments-nav a:hover { 
+	background: #09f; 
+	color: #fff; 
+}
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
 
 
 /* =============================================================================
@@ -44,7 +129,14 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 #banner { position: relative; margin: 22px auto 0; z-index: 1000; height: 110px;}
 #banner .container { padding: 0; }
-
+.signature{
+				font-style: italic;
+				color: hsla(0,0%,0%,0.35);
+				text-shadow: 0px 1px 0px hsla(0,0%,100%,0.7);
+				font-size: 14px;
+				position: relative;
+				margin-bottom: 20px;
+			}
 
 #logo { float: left; margin: 0; padding: 0; }
 #logo img { width: 260px; }
@@ -112,6 +204,14 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 text-align: center;
 font-size: 24px;
 			}
+		.post{
+			font-size: 29px;
+			line-height: 40px;
+		}
+		.post h2, .post h2 a, .post .link a, .post .title a {
+			font-size: 32px;
+			line-height: 39px;
+		}
 		#main{
       margin-top: 2em;
 			margin-left: 16px;
@@ -160,15 +260,25 @@ font-size: 24px;
 </head>
 
 <body class="home blog windows-8-is-a-disaster-period">
-	<div id="wrap" class="container" role="document">
-		<header id="banner" class="" role="banner">
-			<div class="container">
+
+		<div id="wrap" class="container" role="document">
+			<header id="banner" class="" role="banner">
+						<div class="container">
+	
 				<a id="logo" href="http://www.loopinsight.com/">
 					<img src="http://c414155.r55.cf1.rackcdn.com/images/logo.png" alt="The Loop">
 				</a>
+
+													
+							
 			</div>
 		</header>
+				<!-- /#content -->
+				
+		
+
 	</div><!-- /#wrap -->
+
 </body>
 </html>
 <!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
