@@ -18,10 +18,22 @@ body {
 
 <meta name="viewport" content="user-scalable=yes, width=device-width" />
 
+<script>
+function outputInfo() {
+	var info = "window.innerWidth = " + window.innerWidth + "\n";
+	info += "window.innerHeight = " + window.innerHeight + "\n";
+	info += "window.devicePixelRatio = " + window.devicePixelRatio + "\n";
+	info += "document.documentElement.clientWidth = " + document.documentElement.clientWidth + "\n";
+	info += "document.documentElement.clientHeight = " + document.documentElement.clientHeight + "\n";
+
+}
+</script>
+
 </head>
 
 <body>
 	<div id="main">
+		<button onclick="outputInfo()">Get info</button>
 	    <p>TechCrunch:</p>
 		<blockquote>Former Daily Show correspondent John Oliver returned to host this year’s Crunchies, the tech industry awards show co-hosted by Gigaom, VentureBeat, and TechCrunch. And he didn’t pull any punches. Former Daily Show correspondent John Oliver returned to host this year’s Crunchies, the tech industry awards show co-hosted by Gigaom, VentureBeat, and TechCrunch. And he didn’t pull any punches. Former Daily Show correspondent John Oliver returned to host this year’s Crunchies, the tech industry awards show co-hosted by Gigaom, VentureBeat, and TechCrunch. And he didn’t pull any punches. Former Daily Show correspondent John Oliver returned to host this year’s Crunchies, the tech industry awards show co-hosted by Gigaom, VentureBeat, and TechCrunch. And he didn’t pull any punches. Former Daily Show correspondent John Oliver returned to host this year’s Crunchies, the tech industry awards show co-hosted by Gigaom, VentureBeat, and TechCrunch. And he didn’t pull any punches.</blockquote>
 	</div><!-- /#main -->
