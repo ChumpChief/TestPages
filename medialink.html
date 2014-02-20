@@ -9,7 +9,16 @@ html {
 }
 </style>
 <link rel="stylesheet" href="medialink.css" media="(max-width: 640px)" />
+<script>
+window.addEventListener("load", function() {setTimeout(doLoad, 1000)});
+
+function doLoad() {
+    document.getElementById("iW").innerHTML = innerWidth;
+    document.getElementById("cW").innerHTML = document.documentElement.clientWidth;
+}
+</script>
 </head>
 <body>
+This page should be green.  innerWidth is: <span id="iW"></span> and document.documentElement.clientWidth is: <span id="cW"></span>
 </body>
 </html>
