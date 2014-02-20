@@ -20,6 +20,9 @@ function doLoad() {
 </script>
 </head>
 <body>
-This text should be green.  innerWidth is: <span id="iW"></span> and document.documentElement.clientWidth is: <span id="cW"></span>
+<p>innerWidth is: <span id="iW"></span> and document.documentElement.clientWidth is: <span id="cW"></span>.</p>
+<p>ON PHONE:</p>
+<p>These should both be 480 due to the meta tag.</p>
+<p>This text should be green if the actual viewport (as measured by the values above) is less than 640 due to media attribute of the link tag.</p>
 </body>
 </html>
