@@ -1,0 +1,9 @@
+@media (max-width: 640px) {
+    @-ms-viewport {
+        width: 480px;
+    }
+}
+
+html {
+    background-color: #0f0;
+}

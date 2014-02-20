@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=480" />
+<style>
+html {
+    background-color: #f00;
+}
+</style>
+<link rel="stylesheet" href="medialinkMQ.css" />
+<script>
+window.addEventListener("load", function() {setTimeout(doLoad, 1000)});
+
+function doLoad() {
+    document.getElementById("iW").innerHTML = innerWidth;
+    document.getElementById("cW").innerHTML = document.documentElement.clientWidth;
+}
+</script>
+</head>
+<body>
+This page should be green.  innerWidth is: <span id="iW"></span> and document.documentElement.clientWidth is: <span id="cW"></span>
+</body>
+</html>
