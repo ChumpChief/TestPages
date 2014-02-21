@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=640" />
+<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=400" />
+<meta name="viewport" content="width=480" />
+<style>
+html {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
+}
+</style>
+<script>
+window.addEventListener("load", doDuringLoad);
+window.addEventListener("load", function() {setTimeout(doAfterLoad, 1000)});
+
+var iWbl, sWbl, cWbl;
+
+iWbl = window.innerWidth;
+sWbl = screen.width;
+cWbl = document.documentElement.clientWidth;
+
+function doDuringLoad() {
+    document.getElementById("iWbl").innerHTML = iWbl;
+    document.getElementById("sWbl").innerHTML = sWbl;
+    document.getElementById("cWbl").innerHTML = cWbl;
+
+    document.getElementById("iWdl").innerHTML = innerWidth;
+    document.getElementById("sWdl").innerHTML = screen.width;
+    document.getElementById("cWdl").innerHTML = document.documentElement.clientWidth;
+}
+
+function doAfterLoad() {
+    document.getElementById("iWal").innerHTML = innerWidth;
+    document.getElementById("sWal").innerHTML = screen.width;
+    document.getElementById("cWal").innerHTML = document.documentElement.clientWidth;
+}
+</script>
+</head>
+<body>
+<p>innerWidth before load is: <span id="iWbl"></span></p>
+<p>screen.width before load is: <span id="sWbl"></span></p>
+<p>document.documentElement.clientWidth before load is: <span id="cWbl"></span></p>
+<p></p>
+<p>innerWidth during load is: <span id="iWdl"></span></p>
+<p>screen.width during load is: <span id="sWdl"></span></p>
+<p>document.documentElement.clientWidth during load is: <span id="cWdl"></span></p>
+<p></p>
+<p>innerWidth after load is: <span id="iWal"></span></p>
+<p>screen.width after load is: <span id="sWal"></span></p>
+<p>document.documentElement.clientWidth after load is: <span id="cWal"></span></p>
+</body>
+</html>
