@@ -9,18 +9,64 @@ html {
 }
 </style>
 <script>
-window.addEventListener("load", function() {setTimeout(doLoad, 1000)});
+window.addEventListener("load", doDuringLoad);
+window.addEventListener("load", function() {setTimeout(doAfterLoad, 1000)});
 
-function doLoad() {
-    document.getElementById("iW").innerHTML = innerWidth;
-    document.getElementById("sW").innerHTML = screen.width;
-    document.getElementById("cW").innerHTML = document.documentElement.clientWidth;
+var iWbl, sWbl, cWbl;
+
+(function() {
+    iWbl = window.innerWidth;
+    sWbl = screen.width;
+    cWbl = document.documentElement.clientWidth;
+    var viewport = document.getElementById("viewport"),
+        width = Math.min(window.innerWidth, screen.width, document.documentElement.clientWidth),
+        content = '',
+        initialScale = 1.0,
+        toFixed = 1;
+
+    if (width <= 480) {
+        initialScale = width / 480;
+        toFixed = 2;
+        width = 480;
+    } else {
+        width = 'device-width'
+    }
+
+    viewport.content = 'initial-scale='+ Math.round(initialScale * 100) / 100 +', maximum-scale=1.2, width='+width;
+}());
+
+function doDuringLoad() {
+    document.getElementById("iWbl").innerHTML = iWbl;
+    document.getElementById("sWbl").innerHTML = sWbl;
+    document.getElementById("cWbl").innerHTML = cWbl;
+
+    document.getElementById("iWdl").innerHTML = innerWidth;
+    document.getElementById("sWdl").innerHTML = screen.width;
+    document.getElementById("cWdl").innerHTML = document.documentElement.clientWidth;
+}
+
+function doAfterLoad() {
+    document.getElementById("iWal").innerHTML = innerWidth;
+    document.getElementById("sWal").innerHTML = screen.width;
+    document.getElementById("cWal").innerHTML = document.documentElement.clientWidth;
+
+    document.getElementById("vp").innerHTML = document.getElementById("viewport").content;
 }
 </script>
 </head>
 <body>
-<p>innerWidth is: <span id="iW"></span></p>
-<p>screen.width is: <span id="sW"></span></p>
-<p>document.documentElement.clientWidth is: <span id="cW"></span></p>
+<p>innerWidth before load is: <span id="iWbl"></span></p>
+<p>screen.width before load is: <span id="sWbl"></span></p>
+<p>document.documentElement.clientWidth before load is: <span id="cWbl"></span></p>
+<p></p>
+<p>innerWidth during load is: <span id="iWdl"></span></p>
+<p>screen.width during load is: <span id="sWdl"></span></p>
+<p>document.documentElement.clientWidth during load is: <span id="cWdl"></span></p>
+<p></p>
+<p>innerWidth after load is: <span id="iWal"></span></p>
+<p>screen.width after load is: <span id="sWal"></span></p>
+<p>document.documentElement.clientWidth after load is: <span id="cWal"></span></p>
+<p></p>
+<p>viewport content is <span id="vp"></span></p>
 </body>
 </html>
