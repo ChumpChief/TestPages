@@ -8,17 +8,19 @@ html {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
 }
 
-.grayscale {
+.gray1 {
     /* Firefox */
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
- 
+}
+
+.gray2 {
     /* IE 9 */
     filter: gray;
- 
+}
+
+.gray3 {
     /* Chrome/Safari */
     -webkit-filter: grayscale(100%);
- 
-    /* Note: there's no reasonable known way to do this in IE 10/11, so the effect just isn't applied there. */
 }
 
 .colorful {
@@ -29,6 +31,8 @@ html {
 </head>
 <body>
 <div class="colorful">Testing!</div>
-<div class="colorful grayscale">Testing!</div>
+<div class="colorful gray1">Testing!</div>
+<div class="colorful gray2">Testing!</div>
+<div class="colorful gray3">Testing!</div>
 </body>
 </html>
