@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title>Test</title>
+      <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
+   </head>
+   <body>
+      <script>
+      function debug() {
+         var out = window.navigator.userAgent;
+         out += '<br />';
+         out += 'innerWidth: ' + window.innerWidth;
+         document.write(out);
+      }
+      setImmediate(debug);
+      </script>
+   </body>
+</html>
