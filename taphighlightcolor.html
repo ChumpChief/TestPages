@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<style>
+html {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
+}
+
+.testcase {
+    display: block;
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<a class="testcase" style="">No tap highlight color applied</a>
+<a class="testcase" style="-webkit-tap-highlight-color: transparent;">-webkit-tap-highlight-color: transparent;</a>
+<a class="testcase" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">-webkit-tap-highlight-color: rgba(0, 0, 0, 0);</a>
+<a class="testcase" style="-webkit-tap-highlight-color: red;">-webkit-tap-highlight-color: red;</a>
+<a class="testcase" style="-webkit-tap-highlight-color: #f00;">-webkit-tap-highlight-color: #f00;</a>
+<a class="testcase" style="-webkit-tap-highlight-color: rgb(255, 0, 0);">-webkit-tap-highlight-color: rgb(255, 0, 0);</a>
+<a class="testcase" style="-webkit-tap-highlight-color: rgba(255, 0, 0, 1);">-webkit-tap-highlight-color: rgba(255, 0, 0, 1);</a>
+<a class="testcase" style="-webkit-tap-highlight-color: rgba(255, 0, 0, .5);">-webkit-tap-highlight-color: rgba(255, 0, 0, .5);</a>
+<a class="testcase" style="-webkit-tap-highlight-color: hsl(0, 100%, 50%);">-webkit-tap-highlight-color: hsl(0, 100%, 50%);</a>
+<a class="testcase" style="-webkit-tap-highlight-color: hsla(0, 100%, 50%, 1);">-webkit-tap-highlight-color: hsla(0, 100%, 50%, 1);</a>
+<a class="testcase" style="-webkit-tap-highlight-color: hsla(0, 100%, 50%, .5);">-webkit-tap-highlight-color: hsla(0, 100%, 50%, .5);</a>
+<a class="testcase" style="color: #f00; -webkit-tap-highlight-color: currentColor;">color: #f00; -webkit-tap-highlight-color: currentColor;</a>
+<div style="-webkit-tap-highlight-color: #f00;"><a class="testcase" style="-webkit-tap-highlight-color: inherit;">-webkit-tap-highlight-color: inherit;</a></div>
+</body>
+</html>
