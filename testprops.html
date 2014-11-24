@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<style>
+html {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+}
+
+#propslog, #eventlog {
+    position: fixed;
+}
+
+#propslog {
+    top: 0;
+    left: 0;
+}
+
+#eventlog {
+    top: 0;
+    right: 0;
+}
+
+.makeitscroll {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 4000px;
+    left: 4000px;
+}
+</style>
+<script>
+var propslog, eventlog;
+
+function logResize() {
+    eventlog.innerHTML += "resize<br />";
+}
+
+function logScroll() {
+    eventlog.innerHTML += "scroll<br />";
+}
+
+function outputDebugInfo() {
+    var infoString = "";
+
+    infoString += "document.documentElement.clientWidth: " + document.documentElement.clientWidth + "<br />";
+    infoString += "document.documentElement.clientHeight: " + document.documentElement.clientHeight + "<br />";
+    infoString += "document.documentElement.scrollWidth: " + document.documentElement.scrollWidth + "<br />";
+    infoString += "document.documentElement.scrollHeight: " + document.documentElement.scrollHeight + "<br />";
+    infoString += "document.documentElement.scrollLeft: " + document.documentElement.scrollLeft + "<br />";
+    infoString += "document.documentElement.scrollTop: " + document.documentElement.scrollTop + "<br />";
+    infoString += "document.documentElement.clientLeft: " + document.documentElement.clientLeft + "<br />";
+    infoString += "document.documentElement.clientTop: " + document.documentElement.clientTop + "<br />";
+    infoString += "document.body.clientWidth: " + document.body.clientWidth + "<br />";
+    infoString += "document.body.clientHeight: " + document.body.clientHeight + "<br />";
+    infoString += "document.body.scrollWidth: " + document.body.scrollWidth + "<br />";
+    infoString += "document.body.scrollHeight: " + document.body.scrollHeight + "<br />";
+    infoString += "document.body.scrollLeft: " + document.body.scrollLeft + "<br />";
+    infoString += "document.body.scrollTop: " + document.body.scrollTop + "<br />";
+    infoString += "document.body.clientLeft: " + document.body.clientLeft + "<br />";
+    infoString += "document.body.clientTop: " + document.body.clientTop + "<br />";
+    infoString += "window.innerWidth: " + window.innerWidth + "<br />";
+    infoString += "window.innerHeight: " + window.innerHeight + "<br />";
+    infoString += "window.outerWidth: " + window.outerWidth + "<br />";
+    infoString += "window.outerHeight: " + window.outerHeight + "<br />";
+    infoString += "window.pageXOffset: " + window.pageXOffset + "<br />";
+    infoString += "window.pageYOffset: " + window.pageYOffset + "<br />";
+    infoString += "window.scrollX: " + window.scrollX + "<br />";
+    infoString += "window.scrollY: " + window.scrollY + "<br />";
+    infoString += "window.screenLeft: " + window.screenLeft + "<br />";
+    infoString += "window.screenTop: " + window.screenTop + "<br />";
+    infoString += "window.screenX: " + window.screenX + "<br />";
+    infoString += "window.screenY: " + window.screenY + "<br />";
+    infoString += "window.screen.width: " + window.screen.width + "<br />";
+    infoString += "window.screen.height: " + window.screen.height + "<br />";
+    infoString += "window.screen.availWidth: " + window.screen.availWidth + "<br />";
+    infoString += "window.screen.availHeight: " + window.screen.availHeight + "<br />";
+
+
+    propslog.innerHTML = infoString;
+}
+
+function handleLoad() {
+    propslog = document.getElementById("propslog");
+    eventlog = document.getElementById("eventlog");
+    
+    setInterval(outputDebugInfo, 100);
+
+    window.addEventListener("resize", logResize);
+    document.addEventListener("scroll", logScroll);
+}
+
+document.addEventListener("DOMContentLoaded", handleLoad);
+</script>
+</head>
+<body>
+<div id="propslog"></div>
+<div id="eventlog"></div>
+<div class="makeitscroll"></div>
+</body>
+</html>
