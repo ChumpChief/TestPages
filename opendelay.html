@@ -4,6 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 </head>
 <body>
-<a onclick="setTimeout(function() {window.open('http://google.com')}, 1000)">click</a>
+<a onclick="window.open('http://google.com')">works</a>
+<a onclick="setTimeout(function() {window.open('http://google.com')}, 1000)">fails</a>
 </body>
 </html>
