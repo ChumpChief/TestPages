@@ -23,33 +23,33 @@ function setViewport() {
     var viewportContent = [];
 
     // width
-    if(settings.width.value == "devicewidth") {
+    if(document.querySelector("input[name='width']:checked").value == "devicewidth") {
         viewportContent.push("width=device-width");
     }
-    else if(settings.width.value == "staticwidth" && settings.staticwidthvalue.value != "") {
+    else if(document.querySelector("input[name='width']:checked").value == "staticwidth" && settings.staticwidthvalue.value != "") {
         viewportContent.push("width=" + settings.staticwidthvalue.value);
     }
 
     // height
-    if(settings.height.value == "deviceheight") {
+    if(document.querySelector("input[name='height']:checked").value == "deviceheight") {
         viewportContent.push("height=device-height");
     }
-    else if(settings.height.value == "staticheight" && settings.staticheightvalue.value != "") {
+    else if(document.querySelector("input[name='height']:checked").value == "staticheight" && settings.staticheightvalue.value != "") {
         viewportContent.push("height=" + settings.staticheightvalue.value);
     }
 
     // initial-scale
-    if(settings.initialscale.value == "staticinitialscale" && settings.staticinitialscalevalue.value != "") {
+    if(document.querySelector("input[name='initialscale']:checked").value == "staticinitialscale" && settings.staticinitialscalevalue.value != "") {
         viewportContent.push("initial-scale=" + settings.staticinitialscalevalue.value);
     }
 
     // minimum-scale
-    if(settings.minscale.value == "staticminscale" && settings.staticminscalevalue.value != "") {
+    if(document.querySelector("input[name='minscale']:checked").value == "staticminscale" && settings.staticminscalevalue.value != "") {
         viewportContent.push("minimum-scale=" + settings.staticminscalevalue.value);
     }
 
     // maximum-scale
-    if(settings.maxscale.value == "staticmaxscale" && settings.staticmaxscalevalue.value != "") {
+    if(document.querySelector("input[name='maxscale']:checked").value == "staticmaxscale" && settings.staticmaxscalevalue.value != "") {
         viewportContent.push("maximum-scale=" + settings.staticmaxscalevalue.value);
     }
 
@@ -63,30 +63,30 @@ function setViewport() {
 <form id="settings">
     <div class="width">
         width=
-        <input type="radio" name="width" value="none">(none)
-        <input type="radio" name="width" value="devicewidth">device-width
-        <input type="radio" name="width" value="staticwidth"><input type="text" name="staticwidthvalue">
+        <input type="radio" name="width" value="none">(none)</input>
+        <input type="radio" name="width" value="devicewidth">device-width</input>
+        <input type="radio" name="width" value="staticwidth"></input><input type="text" name="staticwidthvalue"></input>
     </div>
     <div class="height">
         height=
-        <input type="radio" name="height" value="none">(none)
-        <input type="radio" name="height" value="deviceheight">device-height
-        <input type="radio" name="height" value="staticheight"><input type="text" name="staticheightvalue">
+        <input type="radio" name="height" value="none">(none)</input>
+        <input type="radio" name="height" value="deviceheight">device-height</input>
+        <input type="radio" name="height" value="staticheight"></input><input type="text" name="staticheightvalue"></input>
     </div>
     <div class="initialscale">
         initial-scale=
-        <input type="radio" name="initialscale" value="none">(none)
-        <input type="radio" name="initialscale" value="staticinitialscale"><input type="text" name="staticinitialscalevalue">
+        <input type="radio" name="initialscale" value="none">(none)</input>
+        <input type="radio" name="initialscale" value="staticinitialscale"></input><input type="text" name="staticinitialscalevalue"></input>
     </div>
     <div class="minscale">
         minimum-scale=
-        <input type="radio" name="minscale" value="none">(none)
-        <input type="radio" name="minscale" value="staticminscale"><input type="text" name="staticminscalevalue">
+        <input type="radio" name="minscale" value="none">(none)</input>
+        <input type="radio" name="minscale" value="staticminscale"></input><input type="text" name="staticminscalevalue"></input>
     </div>
     <div class="maxscale">
         maximum-scale=
-        <input type="radio" name="maxscale" value="none">(none)
-        <input type="radio" name="maxscale" value="staticmaxscale"><input type="text" name="staticmaxscalevalue">
+        <input type="radio" name="maxscale" value="none">(none)</input>
+        <input type="radio" name="maxscale" value="staticmaxscale"></input><input type="text" name="staticmaxscalevalue"></input>
     </div>
 </form>
 </body>
