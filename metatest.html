@@ -54,6 +54,11 @@ function setViewport() {
         viewportContent.push("maximum-scale=" + settings.staticmaxscalevalue.value);
     }
 
+    // user-scalable
+    if(document.querySelector("input[name='userscale']:checked").value == "no") {
+        viewportContent.push("user-scalable=no");
+    }
+
     console.log(viewportContent.join(","));
     document.getElementById("viewport").content = viewportContent.join(",");
 }
@@ -88,6 +93,11 @@ function setViewport() {
         maximum-scale=
         <input type="radio" name="maxscale" value="none" checked>(none)</input>
         <input type="radio" name="maxscale" value="staticmaxscale"></input><input type="text" name="staticmaxscalevalue"></input>
+    </div>
+    <div class="userscale">
+        user-scalable=
+        <input type="radio" name="userscale" value="none" checked>(none)</input>
+        <input type="radio" name="userscale" value="no">no</input>
     </div>
 
     <div id="output"></div>
