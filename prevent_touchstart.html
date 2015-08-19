@@ -25,7 +25,13 @@ html, .scroller {
 </style>
 <script>
 function handleLoad() {
-    document.getElementById("foobar").addEventListener("touchstart", function(e) {e.preventDefault();});
+    document.getElementById("foobar").addEventListener("touchstart", preventIt);
+    document.getElementById("foobar").addEventListener("MSPointerDown", preventIt);
+    document.getElementById("foobar").addEventListener("pointerdown", preventIt);
+}
+
+function preventIt(e) {
+    e.preventDefault()
 }
 
 document.addEventListener("DOMContentLoaded", handleLoad);
