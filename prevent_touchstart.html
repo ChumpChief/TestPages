@@ -25,9 +25,11 @@ html, .scroller {
 </style>
 <script>
 function handleLoad() {
-    document.getElementById("foobar").addEventListener("touchstart", preventIt);
-    document.getElementById("foobar").addEventListener("MSPointerDown", preventIt);
-    document.getElementById("foobar").addEventListener("pointerdown", preventIt);
+    document.getElementById("foo").addEventListener("touchstart", preventIt);
+    document.getElementById("foo").addEventListener("MSPointerDown", preventIt);
+    document.getElementById("foo").addEventListener("pointerdown", preventIt);
+
+    document.getElementById("bar").addEventListener("touchstart", preventIt);
 }
 
 function preventIt(e) {
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", handleLoad);
 </script>
 </head>
 <body>
-<a href="http://google.com" id="foobar">click me and you shouldn't navigate</a>
+<a href="http://google.com" id="foo">Example 1, all handlers</a>
+<a href="http://google.com" id="bar">Example 2, touchstart only</a>
 </body>
 </html>
