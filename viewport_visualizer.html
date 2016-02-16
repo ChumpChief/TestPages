@@ -48,13 +48,7 @@ function dPR(input) {
 
 function sizeVis() {
     getProps();
-
-    // scale the visualization so it will fit fully on screen
-    visProps.scale = Math.min(LV.width / doc.width,
-                              LV.height / doc.height);
-
-    visProps.width = doc.width * visProps.scale;
-    visProps.height = doc.height * visProps.scale;
+    getVisualizationProps();
 
     vis.width = dPR(visProps.width);
     vis.height = dPR(visProps.height);
@@ -91,14 +85,18 @@ function getProps() {
     };
 
     VV = {
-        left: window.pageXOffset,
-        top: window.pageYOffset,
+        left: window.pageXOffset, // could have used window.scrollX
+        top: window.pageYOffset, // could have used window.scrollY
         width: window.innerWidth,
         height: window.innerHeight
     };
 }
 
 function getVisualizationProps() {
+    visProps.scale = Math.min(LV.width / doc.width, LV.height / doc.height);
+    visProps.width = doc.width * visProps.scale;
+    visProps.height = doc.height * visProps.scale;
+
     LVVis = {
         left: Math.floor(LV.left * dPR(visProps.scale)),
         top: Math.floor(LV.top * dPR(visProps.scale)),
