@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    margin: 0;
+}
+
+.makeitscroll {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 4000px;
+    left: 2000px;
+}
+
+#vis {
+    position: fixed;
+    position: -ms-device-fixed;
+    top: 0;
+    left: 0;
+}
+
+.fixedelement {
+    position: fixed;
+    background-color: #449;
+}
+</style>
+<script>
+var vis, ctx;
+var visProps = {};
+var doc, LV, VV
+var LVVis, VVVis;
+
+function dPR(input) {
+    return input * devicePixelRatio;
+}
+
+function sizeVis() {
+    getProps();
+
+    // scale the visualization so it will fit fully on screen
+    visProps.scale = Math.min(LV.width / doc.width,
+                              LV.height / doc.height);
+
+    visProps.width = doc.width * visProps.scale;
+    visProps.height = doc.height * visProps.scale;
+
+    vis.width = dPR(visProps.width);
+    vis.height = dPR(visProps.height);
+
+    vis.style.width = visProps.width + "px";
+    vis.style.height = visProps.height + "px";
+}
+
+function renderVis() {
+    ctx.clearRect(0, 0, vis.width, vis.height);
+
+    getProps();
+    getVisualizationProps();
+
+    drawDoc();
+    drawFixedElements();
+    drawLV();
+    drawVV();
+
+    requestAnimationFrame(renderVis);
+}
+
+function getProps() {
+    doc = {
+        width: document.scrollingElement.scrollWidth,
+        height: document.scrollingElement.scrollHeight
+    };
+
+    LV = {
+        left: document.scrollingElement.scrollLeft,
+        top: document.scrollingElement.scrollTop,
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight
+    };
+
+    VV = {
+        left: window.pageXOffset,
+        top: window.pageYOffset,
+        width: window.innerWidth,
+        height: window.innerHeight
+    };
+}
+
+function getVisualizationProps() {
+    LVVis = {
+        left: Math.floor(LV.left * dPR(visProps.scale)),
+        top: Math.floor(LV.top * dPR(visProps.scale)),
+        width: Math.floor(LV.width * dPR(visProps.scale)),
+        height: Math.floor(LV.height * dPR(visProps.scale))
+    };
+
+    VVVis = {
+        left: Math.floor(VV.left * dPR(visProps.scale)),
+        top: Math.floor(VV.top * dPR(visProps.scale)),
+        width: Math.floor(VV.width * dPR(visProps.scale)),
+        height: Math.floor(VV.height * dPR(visProps.scale))
+    };
+}
+
+function drawDoc() {
+    ctx.fillStyle = "rgba(255, 255, 255, .7)";
+    ctx.fillRect(.5, .5, vis.width - 1, vis.height - 1);
+
+    ctx.strokeStyle = "#000";
+    ctx.strokeRect(.5, .5, vis.width - 1, vis.height - 1);
+
+    ctx.fillStyle = "#000";
+    ctx.font = dPR(10) + "px Courier New";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "top";
+    ctx.fillText("Document dimensions: " + doc.width + "x" + doc.height, doc.width * dPR(visProps.scale) + .5, 0);
+}
+
+function drawLV() {
+    ctx.strokeStyle = "red";
+    ctx.strokeRect(LVVis.left + .5, LVVis.top + .5, LVVis.width - 1, LVVis.height - 1);
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(LVVis.left + .5, LVVis.top + .5);
+    ctx.stroke();
+
+    ctx.fillStyle = "#000";
+    ctx.font = dPR(10) + "px Courier New";
+    ctx.textAlign = "start";
+    ctx.textBaseline = "bottom";
+    ctx.fillText("LV @ " + LV.left + ", " + LV.top, LVVis.left + .5, LVVis.top + .5);
+    ctx.textAlign = "center";
+    ctx.fillText("LV size: " + LV.width + "x" + LV.height, LVVis.left + (LVVis.width / 2) + .5, LVVis.top + (LVVis.height / 2) + .5);
+}
+
+function drawVV() {
+    ctx.strokeStyle = "green";
+    ctx.strokeRect(VVVis.left + .5, VVVis.top + .5, VVVis.width - 1, VVVis.height - 1);
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(VVVis.left + .5, VVVis.top + .5);
+    ctx.stroke();
+
+    ctx.fillStyle = "#000";
+    ctx.font = dPR(10) + "px Courier New";
+    ctx.textAlign = "start";
+    ctx.textBaseline = "top";
+    ctx.fillText("VV @ " + VV.left + ", " + VV.top, VVVis.left + .5, VVVis.top + .5);
+    ctx.textAlign = "center";
+    ctx.fillText("VV size: " + VV.width + "x" + VV.height, VVVis.left + (VVVis.width / 2) + .5, VVVis.top + (VVVis.height / 2) + .5);
+}
+
+function drawFixedElements() {
+    ctx.fillStyle = "#449";
+    var elements = document.querySelectorAll(".fixedelement");
+    for(e in elements) {
+        var bCR = elements.item(e).getBoundingClientRect();
+
+        var elemVis = {
+            left: Math.floor((LV.left + bCR.left) * dPR(visProps.scale)),
+            top: Math.floor((LV.top + bCR.top) * dPR(visProps.scale)),
+            width: Math.floor(bCR.width * dPR(visProps.scale)),
+            height: Math.floor(bCR.height * dPR(visProps.scale))
+        };
+
+        ctx.fillRect(elemVis.left + .5, elemVis.top + .5, elemVis.width - 1, elemVis.height - 1);
+    }
+}
+
+function handleLoad() {
+    vis = document.getElementById("vis");
+    ctx = vis.getContext("2d");
+
+    window.addEventListener("resize", sizeVis);
+
+    sizeVis();
+    renderVis();
+}
+
+document.addEventListener("DOMContentLoaded", handleLoad);
+</script>
+</head>
+<body>
+<div class="fixedelement" style="left: 400px; top: 0; width: 50%; height: 50px;"></div>
+<div class="fixedelement" style="right: 0; top: 300px; width: 200px; height: 400px;"></div>
+<div class="fixedelement" style="left: 400px; bottom: 0; width: 50%; height: 50px;"></div>
+<div class="fixedelement" style="right: 0; top: 0; width: 100px; height: 100px;"></div>
+<canvas id="vis" width=200 height=800></canvas>
+<div class="makeitscroll"></div>
+</body>
+</html>
