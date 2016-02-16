@@ -125,7 +125,7 @@ function drawDoc() {
     ctx.font = dPR(10) + "px Courier New";
     ctx.textAlign = "right";
     ctx.textBaseline = "top";
-    ctx.fillText("Document dimensions: " + doc.width + "x" + doc.height, doc.width * dPR(visProps.scale) + .5, 0);
+    ctx.fillText("Document dimensions: " + doc.width + "x" + doc.height, doc.width * dPR(visProps.scale) + .5, 0, vis.width);
 }
 
 function drawLV() {
@@ -141,9 +141,9 @@ function drawLV() {
     ctx.font = dPR(10) + "px Courier New";
     ctx.textAlign = "start";
     ctx.textBaseline = "bottom";
-    ctx.fillText("LV @ " + LV.left + ", " + LV.top, LVVis.left + .5, LVVis.top + .5);
+    ctx.fillText("LV @ " + LV.left + ", " + LV.top, LVVis.left + .5, LVVis.top + .5, LVVis.width);
     ctx.textAlign = "center";
-    ctx.fillText("LV size: " + LV.width + "x" + LV.height, LVVis.left + (LVVis.width / 2) + .5, LVVis.top + (LVVis.height / 2) + .5);
+    ctx.fillText("LV size: " + LV.width + "x" + LV.height, LVVis.left + (LVVis.width / 2) + .5, LVVis.top + (LVVis.height / 2) + .5, LVVis.width);
 }
 
 function drawVV() {
@@ -159,9 +159,9 @@ function drawVV() {
     ctx.font = dPR(10) + "px Courier New";
     ctx.textAlign = "start";
     ctx.textBaseline = "top";
-    ctx.fillText("VV @ " + VV.left + ", " + VV.top, VVVis.left + .5, VVVis.top + .5);
+    ctx.fillText("VV @ " + VV.left + ", " + VV.top, VVVis.left + .5, VVVis.top + .5, VVVis.width);
     ctx.textAlign = "center";
-    ctx.fillText("VV size: " + VV.width + "x" + VV.height, VVVis.left + (VVVis.width / 2) + .5, VVVis.top + (VVVis.height / 2) + .5);
+    ctx.fillText("VV size: " + VV.width + "x" + VV.height, VVVis.left + (VVVis.width / 2) + .5, VVVis.top + (VVVis.height / 2) + .5, VVVis.width);
 }
 
 function drawFixedElements() {
