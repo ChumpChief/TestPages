@@ -11,11 +11,17 @@
       </style>
    </head>
    <body>
+      <div id="output1"></div>
+      <div id="output2"></div>
       <script>
-         var out = window.navigator.userAgent;
-         out += '<br />';
-         out += 'innerWidth: ' + window.innerWidth;
-         document.body.innerHTML = out;
+         var one = 'innerWidth: ' + window.innerWidth;
+         document.getElementById("output1").innerHTML = one;
+
+         function correct() {
+            var two = 'innerWidth: ' + window.innerWidth;
+            document.getElementById("output2").innerHTML = two;
+         }
+         setTimeout(correct, 500);
       </script>
    </body>
 </html>
