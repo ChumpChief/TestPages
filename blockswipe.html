@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html, .scroller {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
+}
+
+body {
+    margin: 0;
+}
+
+.overflowhidden {
+    overflow: hidden;
+}
+
+#togglebodyscroll::after {
+    content: "Body is overflow: auto";
+}
+
+.overflowhidden #togglebodyscroll::after {
+    content: "Body is overflow: hidden";
+}
+
+.scroller {
+    width: 400px;
+    height: 400px;
+    overflow: scroll;
+    position: relative;
+}
+
+.makeitscroll {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 4000px;
+    left: 4000px;
+}
+
+.test {
+    width: 300px;
+    height: 100px;
+    background-color: #ddd;
+    margin: 10px;
+}
+
+.touchaction {
+    touch-action: none;
+}
+
+.touchaction2 {
+    touch-action: pan-y;
+}
+
+.scrollchaining {
+    overflow: scroll;
+    -ms-scroll-chaining: none;
+}
+</style>
+<script>
+function handleLoad() {
+    document.getElementById("togglebodyscroll").addEventListener("click", function() {
+        document.body.classList.toggle("overflowhidden");
+    });
+
+    document.querySelector(".touchevent").addEventListener("touchstart", function(e) {
+        e.preventDefault();
+    });
+}
+
+document.addEventListener("DOMContentLoaded", handleLoad);
+</script>
+</head>
+<body class="overflowhidden">
+<button id="togglebodyscroll"></button>
+<div class="test touchaction">
+    <pre>
+.touchaction {
+    touch-action: none;
+}
+    </pre>
+</div>
+
+<div class="test touchaction2">
+    <pre>
+.touchaction2 {
+    touch-action: pan-y;
+}
+    </pre>
+</div>
+
+<div class="test touchevent">
+    <pre>
+// only affects phone, not desktop
+element.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+});
+    </pre>
+</div>
+
+<div class="test scrollchaining">
+    <pre>
+.scrollchaining {
+    overflow: scroll;
+    -ms-scroll-chaining: none;
+}
+    </pre>
+</div>
+</body>
+</html>
