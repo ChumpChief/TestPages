@@ -50,6 +50,10 @@ body {
     overflow: scroll;
     -ms-scroll-chaining: none;
 }
+
+.touchevent {
+    background-color: #ff9;
+}
 </style>
 <script>
 function handleLoad() {
@@ -83,21 +87,21 @@ document.addEventListener("DOMContentLoaded", handleLoad);
     </pre>
 </div>
 
-<div class="test touchevent">
-    <pre>
-// only affects phone, not desktop
-element.addEventListener("touchstart", function(e) {
-    e.preventDefault();
-});
-    </pre>
-</div>
-
 <div class="test scrollchaining">
     <pre>
 .scrollchaining {
     overflow: scroll;
     -ms-scroll-chaining: none;
 }
+    </pre>
+</div>
+
+<div class="test touchevent">
+    <pre>
+// only affects phone, not desktop
+element.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+});
     </pre>
 </div>
 
