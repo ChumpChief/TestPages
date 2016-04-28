@@ -54,6 +54,11 @@ body {
 .touchevent {
     background-color: #ff9;
 }
+
+.map {
+    touch-action: pan-y;
+    background-color: #fd9;
+}
 </style>
 <script>
 function handleLoad() {
@@ -62,6 +67,10 @@ function handleLoad() {
     });
 
     document.querySelector(".touchevent").addEventListener("touchstart", function(e) {
+        e.preventDefault();
+    });
+
+    document.querySelector(".map").addEventListener("touchmove", function(e) {
         e.preventDefault();
     });
 }
@@ -100,6 +109,20 @@ document.addEventListener("DOMContentLoaded", handleLoad);
     <pre>
 // only affects phone, not desktop
 element.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+});
+    </pre>
+</div>
+
+<div class="test map">
+    <pre>
+// affects both phone and desktop
+.map {
+    touch-action: pan-y;
+}
+
+// only affects phone, not desktop
+element.addEventListener("touchmove", function(e) {
     e.preventDefault();
 });
     </pre>
