@@ -8,8 +8,10 @@ html {
 }
 </style>
 <script>
+var log = "";
+
 function logValues(eventName) {
-    console.log(eventName + ": " + devicePixelRatio + ", " + screen.width + ", " + screen.height);
+    log += eventName + ": " + devicePixelRatio + ", " + screen.width + ", " + screen.height + "<br />";
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -21,11 +23,15 @@ window.addEventListener("load", function() {
     setTimeout(function() {
         logValues("Post load");
     }, 1000);
+    setTimeout(function() {
+        document.getElementById("output").innerHTML = log;
+    }, 2000);
 });
 
 logValues("Before load");
 </script>
 </head>
 <body>
+<div id="output"></div>
 </body>
 </html>
