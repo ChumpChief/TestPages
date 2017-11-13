@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html, .scroller {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
+}
+
+.scroller {
+    width: 400px;
+    height: 400px;
+    overflow: scroll;
+    position: relative;
+}
+
+.makeitscroll {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 4000px;
+    left: 4000px;
+}
+</style>
+<script>
+var windowHandle;
+
+function openWindow() {
+    var args = [];
+
+    var widthArg = document.getElementById("widtharg").value;
+    if(widthArg != "") args.push("width=" + widthArg);
+
+    var heightArg = document.getElementById("heightarg").value;
+    if(heightArg != "") args.push("height=" + heightArg);
+
+    var outerWidthArg = document.getElementById("outerwidtharg").value;
+    if(outerWidthArg != "") args.push("outerWidth=" + outerWidthArg);
+
+    var outerHeightArg = document.getElementById("outerheightarg").value;
+    if(outerHeightArg != "") args.push("outerHeight=" + outerHeightArg);
+
+    var innerWidthArg = document.getElementById("innerwidtharg").value;
+    if(innerWidthArg != "") args.push("innerWidth=" + innerWidthArg);
+
+    var innerHeightArg = document.getElementById("innerheightarg").value;
+    if(innerHeightArg != "") args.push("innerHeight=" + innerHeightArg);
+
+    var leftArg = document.getElementById("leftarg").value;
+    if(leftArg != "") args.push("left=" + leftArg);
+
+    var topArg = document.getElementById("toparg").value;
+    if(topArg != "") args.push("top=" + topArg);
+
+    var screenXArg = document.getElementById("screenxarg").value;
+    if(screenXArg != "") args.push("screenX=" + screenXArg);
+
+    var screenYArg = document.getElementById("screenyarg").value;
+    if(screenYArg != "") args.push("screenY=" + screenYArg);
+
+    var customArgs = document.getElementById("customargs").value;
+    if(customArgs != "") args.push(customArgs);
+
+    console.log("window.open(\"testprops.html\", \"TestPopup\", \"" + args.join(",") + "\")");
+    windowHandle = window.open("testprops.html", "TestPopup", args.join(","));
+}
+
+function moveToWindow() {
+    var args = [];
+
+    var leftMoveArg = document.getElementById("leftmovearg").value;
+    var topMoveArg = document.getElementById("topmovearg").value;
+    console.log("window.moveTo(" + leftMoveArg + ", " + topMoveArg + ")");
+    windowHandle.moveTo(leftMoveArg, topMoveArg);
+}
+
+function moveByWindow() {
+    var args = [];
+
+    var leftMoveArg = document.getElementById("leftmovearg").value;
+    var topMoveArg = document.getElementById("topmovearg").value;
+    console.log("window.moveBy(" + leftMoveArg + ", " + topMoveArg + ")");
+    windowHandle.moveBy(leftMoveArg, topMoveArg);
+}
+
+function handleLoad() {
+    document.getElementById("openbutton").addEventListener("click", openWindow);
+    document.getElementById("movetobutton").addEventListener("click", moveToWindow);
+    document.getElementById("movebybutton").addEventListener("click", moveByWindow);
+}
+
+function hangTime(time) {
+    var startTime = (new Date).getTime();
+    var endTime = startTime + time;
+    while((new Date).getTime() < endTime){
+        //wait for it...
+    }
+}
+
+document.addEventListener("DOMContentLoaded", handleLoad);
+</script>
+</head>
+<body>
+    window.open():<br>
+    width=<input type="text" id="widtharg"><br>
+    height=<input type="text" id="heightarg"><br>
+    outerWidth=<input type="text" id="outerwidtharg"><br>
+    outerHeight=<input type="text" id="outerheightarg"><br>
+    innerWidth=<input type="text" id="innerwidtharg"><br>
+    innerHeight=<input type="text" id="innerheightarg"><br>
+    left=<input type="text" id="leftarg"><br>
+    top=<input type="text" id="toparg"><br>
+    screenX=<input type="text" id="screenxarg"><br>
+    screenY=<input type="text" id="screenyarg"><br>
+    Further custom args: <input type="text" id="customargs"><br>
+    <button id="openbutton">Open popup with these args</button><br>
+    <br>
+    window.moveTo(), window.moveBy()<br>
+    Left: <input type="text" id="leftmovearg"><br>
+    Top: <input type="text" id="topmovearg"><br>
+    <button id="movetobutton">moveTo popup with these args</button><button id="movebybutton">moveBy popup with these args</button>
+</body>
+</html>
