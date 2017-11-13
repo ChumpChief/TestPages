@@ -82,10 +82,30 @@ function moveByWindow() {
     windowHandle.moveBy(leftMoveArg, topMoveArg);
 }
 
+function resizeToWindow() {
+    var args = [];
+
+    var widthResizeArg = document.getElementById("widthresizearg").value;
+    var heightResizeArg = document.getElementById("heightresizearg").value;
+    console.log("window.resizeTo(" + widthResizeArg + ", " + heightResizeArg + ")");
+    windowHandle.resizeTo(widthResizeArg, heightResizeArg);
+}
+
+function resizeByWindow() {
+    var args = [];
+
+    var widthResizeArg = document.getElementById("widthresizearg").value;
+    var heightResizeArg = document.getElementById("heightresizearg").value;
+    console.log("window.resizeBy(" + widthResizeArg + ", " + heightResizeArg + ")");
+    windowHandle.resizeBy(widthResizeArg, heightResizeArg);
+}
+
 function handleLoad() {
     document.getElementById("openbutton").addEventListener("click", openWindow);
     document.getElementById("movetobutton").addEventListener("click", moveToWindow);
     document.getElementById("movebybutton").addEventListener("click", moveByWindow);
+    document.getElementById("resizetobutton").addEventListener("click", resizeToWindow);
+    document.getElementById("resizebybutton").addEventListener("click", resizeByWindow);
 }
 
 function hangTime(time) {
@@ -118,5 +138,10 @@ document.addEventListener("DOMContentLoaded", handleLoad);
     Left: <input type="text" id="leftmovearg"><br>
     Top: <input type="text" id="topmovearg"><br>
     <button id="movetobutton">moveTo popup with these args</button><button id="movebybutton">moveBy popup with these args</button>
+    <br>
+    window.resizeTo(), window.resizeBy()<br>
+    Width: <input type="text" id="widthresizearg"><br>
+    Height: <input type="text" id="heightresizearg"><br>
+    <button id="resizetobutton">resizeTo popup with these args</button><button id="resizebybutton">resizeBy popup with these args</button>
 </body>
 </html>
