@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVHhe7durEcJAAEVRgsXRCPVCRziQUAI/BdhgKCDXZSYn+oqds2/idhjHcTWz7/z67LabmR1qdbje13M705zPAyvcDixYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAIqWXBCgIhtSxYQSCklgUrCITUsmAFgZBaFqwgEFLLghUEQmpZsIJASC0LVhAI6XB6vkO+4PT4+A5esk4cgJesE6H+mR988IIFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIbUsWEEgpJYFKwiE1LJgBYGQWhasIBBSy4IVBEJqWbCCQEgtC1YQCKllwQoCIR32l1vIl53+AI/JGTUBmZViAAAAAElFTkSuQmCC) repeat local;
+    touch-action: none;
+}
+
+body {
+    background: none;
+}
+
+#blocklink {
+    width: 100px;
+    height: 100px;
+    background-color: #faa;
+    display: block;
+}
+
+#inlinelink {
+    width: 100px;
+    height: 100px;
+    font-size: 30px;
+    background-color: #afa;
+}
+
+#divtarget {
+    width: 100px;
+    height: 100px;
+    background-color: #aaf;
+}
+
+.controls {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 20px;
+}
+
+#touchactionsetting, #clearsetting {
+    margin: 10px;
+}
+</style>
+<script>
+function logEvent(e) {
+    document.getElementById("output").innerHTML += e.target.id + ": " + e.type + "<br>";
+}
+
+function handleLoad() {
+    ["blocklink", "inlinelink", "divtarget"].forEach(targetid => {
+        var target = document.getElementById(targetid);
+
+        target.addEventListener("pointerdown", logEvent);
+        target.addEventListener("pointerup", logEvent);
+        target.addEventListener("pointercancel", logEvent);
+        target.addEventListener("click", logEvent);   
+    });
+
+    document.getElementById("touchactionsetting").addEventListener("change", (e) => { document.documentElement.style.touchAction = e.target.value; });
+    document.getElementById("clearlog").addEventListener("click", () => { document.getElementById("output").innerHTML = ""; });
+}
+
+document.addEventListener("DOMContentLoaded", handleLoad);
+</script>
+</head>
+<body>
+    <a href="#" id="blocklink">block link</a><br>
+    <a href="#" id="inlinelink">inline link</a><br><br>
+    <div id="divtarget">div</div>
+    <div class="controls">
+        <div id="touchactionsetting">
+            <div>touch-action:</div>
+            <input type="radio" id="touchactionnone" name="touchaction" value="none" checked><label for="touchactionnone">none</label>
+            <input type="radio" id="touchactionmanipulation" name="touchaction" value="manipulation"><label for="touchactionmanipulation">manipulation</label>
+            <input type="radio" id="touchactionauto" name="touchaction" value="auto"><label for="touchactionauto">auto</label>
+        </div>
+        <div id="clearsetting">
+            <button id="clearlog">Clear log</button>
+        </div>
+        <div id="output"></div>
+    </div>
+</body>
+</html>
