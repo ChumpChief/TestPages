@@ -8,8 +8,11 @@ html {
     touch-action: none;
 }
 
-body {
-    background: none;
+.makeitscroll {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    top: 10000px;
 }
 
 #blocklink {
@@ -81,5 +84,6 @@ document.addEventListener("DOMContentLoaded", handleLoad);
         </div>
         <div id="output"></div>
     </div>
+    <div class="makeitscroll"></div>
 </body>
 </html>
