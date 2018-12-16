@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <title>My first three.js app</title>
+        <style>
+            body { margin: 0; overflow: hidden; }
+            canvas { width: 100%; height: 100%; }
+        </style>
+        <script src="node_modules/three/build/three.js"></script>
+        <script>
+            var scene, camera, renderer, cube, dirty, vrMode, display;
+            function initScene() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+                renderer = new THREE.WebGLRenderer();
+                renderer.setSize( window.innerWidth, window.innerHeight );
+                document.body.appendChild( renderer.domElement );
+
+                var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+                var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+                cube = new THREE.Mesh( geometry, material );
+                scene.add( cube );
+
+                var light = new THREE.PointLight( 0xffffff, 1, 100 );
+                light.position.set( 0, 0, 5 );
+                scene.add( light );
+
+                camera.position.z = 5;
+            }
+
+            function rotateFromMouse(e) {
+                cube.rotation.x = (Math.PI / 2) * (2 * e.pageY - window.innerHeight) / window.innerHeight;
+                cube.rotation.y = (Math.PI / 2) * (2 * e.pageX - window.innerWidth) / window.innerWidth;
+                dirty = true;
+            }
+
+            function requestVR(e) {
+                if(display)
+                    display.requestPresent([{ source: renderer.domElement }]);
+                else
+                    console.error("Don't have a display");
+            }
+
+            function animate() {
+                if(vrMode)
+                    display.requestAnimationFrame( animate );
+                else
+                    requestAnimationFrame( animate );
+
+                if(dirty) {
+                    renderer.render( scene, camera );
+                    dirty = false;
+                }
+            }
+
+            function handleLoad() {
+                initScene();
+                dirty = true;
+                vrMode = false;
+                animate();
+                renderer.domElement.addEventListener("pointermove", rotateFromMouse);
+                renderer.domElement.addEventListener("click", requestVR);
+
+                if(navigator.getVRDisplays) {
+                    navigator.getVRDisplays().then(displays => {
+                        if(displays.length > 0) {
+                            display = displays[0];
+                            vrMode = true;
+                        }
+                    });
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", handleLoad);
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
