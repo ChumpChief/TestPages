@@ -38,16 +38,22 @@
 
             function requestVR(e) {
                 if(display)
-                    display.requestPresent([{ source: renderer.domElement }]);
+                    display.requestPresent([{ source: renderer.domElement }]).then(() => {
+                        display.requestAnimationFrame( vrAnimate );
+                    });
                 else
                     console.error("Don't have a display");
             }
 
+            function vrAnimate() {
+                display.requestAnimationFrame(vrAnimate);
+                renderer.render( scene, camera );
+            }
+
             function animate() {
-                if(vrMode)
-                    display.requestAnimationFrame( animate );
-                else
+                if(!vrMode) {
                     requestAnimationFrame( animate );
+                }
 
                 if(dirty) {
                     renderer.render( scene, camera );
