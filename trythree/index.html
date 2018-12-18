@@ -38,6 +38,11 @@
 
             function requestVR(e) {
                 if(display)
+                    // attempt workaround
+                    const dummyCanvas = document.createElement('canvas');
+                    const dummyCtx = dummyCanvas.getContext('webgl');
+                    await display.requestPresent([{ source: dummyCanvas }]);
+
                     display.requestPresent([{ source: renderer.domElement }]).then(() => {
                         display.requestAnimationFrame( vrAnimate );
                     });
