@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+        }
+        #canvasEl {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        var canvasEl, ctx, display;
+
+        function handleLoad() {
+            canvasEl = document.getElementById("canvasEl");
+            canvasEl.width = window.innerWidth;
+            canvasEl.height = window.innerHeight;
+            
+            ctx = canvasEl.getContext("2d");
+            ctx.fillStyle = "#00ffff";
+            ctx.fillRect(50, 100, 200, 250);
+
+            if(navigator.getVRDisplays) {
+                navigator.getVRDisplays().then(displays => {
+                    if(displays.length > 0) {
+                        display = displays[0];
+                    }
+                });
+            }
+        }
+
+        function requestVR() {
+            if(display)
+                display.requestPresent([{ source: canvasEl }]);
+            else
+                console.error("Don't have a display");
+        }
+
+        document.addEventListener("DOMContentLoaded", handleLoad);
+    </script>
+</head>
+<body>
+    <canvas id="canvasEl"></canvas>
+</body>
+</html>
