@@ -36,8 +36,8 @@
                 dirty = true;
             }
 
-            function requestVR(e) {
-                if(display)
+            async function requestVR(e) {
+                if(display) {
                     // attempt workaround
                     const dummyCanvas = document.createElement('canvas');
                     const dummyCtx = dummyCanvas.getContext('webgl');
@@ -46,6 +46,7 @@
                     display.requestPresent([{ source: renderer.domElement }]).then(() => {
                         display.requestAnimationFrame( vrAnimate );
                     });
+                }
                 else
                     console.error("Don't have a display");
             }
