@@ -37,11 +37,16 @@
         }
 
         function requestVR() {
-            if(display)
+            ctx.fillStyle = "#ff0000";
+            ctx.fillRect(0, 0, 50, 50);
+            if(display) {
+                ctx.fillStyle = "#0000ff";
+                ctx.fillRect(0, 0, 25, 25);
                 display.requestPresent([{ source: canvasEl }]).then(() => {
                     ctx.fillStyle = "#00ff00";
                     ctx.fillRect(50, 100, 200, 250);
                 });
+            }
             else
                 console.error("Don't have a display");
         }
