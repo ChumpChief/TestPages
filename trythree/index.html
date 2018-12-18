@@ -48,6 +48,7 @@
             function vrAnimate() {
                 display.requestAnimationFrame(vrAnimate);
                 renderer.render( scene, camera );
+                display.submitFrame();
             }
 
             function animate() {
