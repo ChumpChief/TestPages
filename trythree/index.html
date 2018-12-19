@@ -27,7 +27,7 @@
                 light.position.set( 0, 0, 5 );
                 scene.add( light );
 
-                camera.position.z = 5;
+                camera.position.z = 1;
             }
 
             function rotateFromMouse(e) {
@@ -36,14 +36,9 @@
                 dirty = true;
             }
 
-            async function requestVR(e) {
+            function requestVR(e) {
                 if(display) {
-                    // attempt workaround
-                    const dummyCanvas = document.createElement('canvas');
-                    const dummyCtx = dummyCanvas.getContext('webgl');
-                    await display.requestPresent([{ source: dummyCanvas }]);
-
-                    display.requestPresent([{ source: renderer.domElement }]).then(() => {
+                    display.requestPresent([{ source: renderer.domElement }], { highRefreshRate: true }).then(() => {
                         display.requestAnimationFrame( vrAnimate );
                     });
                 }
@@ -53,6 +48,8 @@
 
             function vrAnimate() {
                 display.requestAnimationFrame(vrAnimate);
+                let frameData = new VRFrameData();
+                display.getFrameData(frameData);
                 renderer.render( scene, camera );
                 display.submitFrame();
             }
